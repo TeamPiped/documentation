@@ -36,7 +36,7 @@ I created Piped to fix issues in NewPipe and Invidious which are architectural i
 ### NewPipe
 
 -   Your IP is exposed to YouTube.
--   Feeds are slow to load.
+-   Feeds are slow to load/update in comparion to YouTube.
 
 ### Invidious
 
