@@ -36,7 +36,7 @@ I created Piped to fix issues in NewPipe and Invidious which are architectural i
 ### NewPipe
 
 -   Your IP is exposed to YouTube.
--   Feeds are slow to load/update in comparion to YouTube.
+-   Feeds are slow to load/update in comparison to YouTube.
 
 ### Invidious
 
@@ -46,7 +46,7 @@ I created Piped to fix issues in NewPipe and Invidious which are architectural i
 -   Caching is done at a backend level.
 -   Invidious was a learning project.
 -   Invidious crashes all the time.
--   Various hacks are required to keep an instance running at a reasonable stablity.
+-   Various hacks are required to keep an instance running at a reasonable stability.
 
 However, there are some drawbacks of Piped:
 

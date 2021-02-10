@@ -23,7 +23,7 @@ links: https://github.com/TeamPiped/Piped\, https://github.com/TeamPiped/Piped-B
 
 -   Uses Java 11
 -   Uses the native HTTP client introduced in Java 9
--   Uses netty-reactor to acheive maximum performance and a low footprint.
+-   Uses netty-reactor to achieve maximum performance and a low footprint.
 -   Supports OpenJ9
 -   Each running instance should configure their own proxy, thus allowing multi-gigabit content delivery.
 -   Uses ~70-130 MB of ram. (on OpenJ9)
