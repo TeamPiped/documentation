@@ -4,6 +4,20 @@ weight: 4
 summary: How can I Self-Host Piped?
 ---
 
+## Docker-Compose Caddy AIO script
+
+First, install `git`, `docker` and `docker-compose`.
+
+Run `git clone https://github.com/TeamPiped/Piped-Docker`.
+
+Then, run `cd Piped-Docker`.
+
+Then, run `./configure-instance.sh` and fill in the hostnames when asked.
+
+Now, create A records to your server's public IP with the hostnames you had filled in above.
+
+Finally, run `docker-compose up -d` and you're done!
+
 ## Docker-Compose with Nginx
 
 First download the files required to run Piped.
@@ -24,6 +38,7 @@ A pipedproxy-bom.kavin.rocks
 Now, edit your `config.properties` file to reflect the changes.
 
 Now, run piped with the following command:
+
 ```
 docker-compose up -d
 ```
@@ -31,11 +46,13 @@ docker-compose up -d
 Now, find your nginx user's and group's id.
 
 You can do this by running the following command:
+
 ```
 cat /etc/passwd
 ```
 
 Then look for a line which starts with `www-data` or `nginx`, here is an example of that:
+
 ```
 www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
 ```
@@ -43,11 +60,13 @@ www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
 Now, you have the user and group id - `33:33`.
 
 Now, run the proxy with the following command, while replacing the user parameter with what you just found:
+
 ```
 docker run -d --network=host -v "/var/run/ytproxy/:/app/socket" --user 33:33 --restart unless-stopped 1337kavin/ytproxy:latest
 ```
 
 You can now use watchtower to enable automatic container updates (optional):
+
 ```
 docker run -d \
     --name watchtower \
@@ -58,6 +77,7 @@ docker run -d \
 Now, create an nginx snipper like so:
 
 `/etc/nginx/snippets/ytproxy.conf`
+
 ```
 add_header Access-Control-Allow-Origin *;
 add_header Access-Control-Allow-Headers *;
@@ -88,6 +108,7 @@ proxy_pass http://unix:/var/run/ytproxy/http-proxy.sock;
 Now, create a site configuration file:
 
 `/etc/nginx/sites-available/piped.conf`
+
 ```
 server {
     listen 80;
@@ -110,7 +131,7 @@ server {
     ssl_early_data on;
     server_name pipedproxy-bom.kavin.rocks; # Change this depending on what domain you are using
 
-    location ~ (/videoplayback|/api/v4/) {
+    location ~ (/videoplayback|/api/v4/|/api/manifest/) {
        include snippets/ytproxy.conf;
        add_header Cache-Control private always;
        proxy_hide_header Access-Control-Allow-Origin;
