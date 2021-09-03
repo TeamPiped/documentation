@@ -80,6 +80,7 @@ Response:
     "uploadedDate": "2021-01-01", // The date the video was uploaded
     "uploader": "", // The name of the channel of the video
     "uploaderUrl": "/channel/...", // The URL of the channel of the video
+    "uploaderVerified": true, // Whether or not the channel of the video is verified
     "videoStreams": [
         {
             "bitrate": 0, // The bitrate of the video stream in bytes
