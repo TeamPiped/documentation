@@ -28,7 +28,7 @@ Parameters:
 
 Response:
 
-```json
+```javascript
 {
 	"audioStreams": [
 		{
