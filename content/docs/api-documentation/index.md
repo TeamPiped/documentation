@@ -30,26 +30,26 @@ Response:
 
 ```javascript
 {
-	"audioStreams": [
-		{
-			"bitrate": 0, // The bitrate of the audio stream in bytes
-			"codec": "mp4a.40.5", // The codec of the audio stream
-			"format": "M4A", // The format of the audio stream
-			"indexEnd": 0, // Useful for creating dash streams
-			"indexStart": 0, // Useful for creating dash streams
-			"initStart": 0, // Useful for creating dash streams
-			"initEnd": 0, // Useful for creating dash streams
-			"mimeType": "audio/mp4", // The mime type of the audio stream
-			"quality": "48 kbps", // The quality of the audio stream
-			"url": "https://pipedproxy-bom.kavin.rocks/videoplayback?...", // The stream's URL
-			"videoOnly": false // Whether or not the stream is video only
-		}
-	], // The audio streams of the video
-	"dash": null, // The dash manifest URL, to be used if not null (for OTF streams)
-	"description": "", // The description of the video
-	"dislikes": 0, // The number of dislikes the video has
-	"duration": 0, // The duration of the video in seconds
-	"hls": null, // The hls manifest URL, to be used for Livestreams,
+    "audioStreams": [
+        {
+            "bitrate": 0, // The bitrate of the audio stream in bytes
+            "codec": "mp4a.40.5", // The codec of the audio stream
+            "format": "M4A", // The format of the audio stream
+            "indexEnd": 0, // Useful for creating dash streams
+            "indexStart": 0, // Useful for creating dash streams
+            "initStart": 0, // Useful for creating dash streams
+            "initEnd": 0, // Useful for creating dash streams
+            "mimeType": "audio/mp4", // The mime type of the audio stream
+            "quality": "48 kbps", // The quality of the audio stream
+            "url": "https://pipedproxy-bom.kavin.rocks/videoplayback?...", // The stream's URL
+            "videoOnly": false // Whether or not the stream is video only
+        }
+    ], // The audio streams of the video
+    "dash": null, // The dash manifest URL, to be used if not null (for OTF streams)
+    "description": "", // The description of the video
+    "dislikes": 0, // The number of dislikes the video has
+    "duration": 0, // The duration of the video in seconds
+    "hls": null, // The hls manifest URL, to be used for Livestreams,
     "lbryId": "", // The lbry id of the video, if available
     "likes": 0, // The number of likes the video has
     "livestream": false, // Whether or not the video is a livestream
@@ -60,6 +60,7 @@ Response:
             "thumbnail": "https://pipedproxy-bom.kavin.rocks/vi/...", // The thumbnail of the related video
             "title": "", // The title of the related video
             "uploadedDate": "3 months ago", // The date the related video was uploaded
+            "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the related video
             "uploaderUrl": "/channel/...", // The URL of the channel of the related video
             "uploaderVerified": true, // Whether or not the channel of the related video is verified
             "url": "/watch?v=..." // The URL of the related video
@@ -100,5 +101,162 @@ Response:
         }
     ], // The video streams of the video
     "views": 0 // The number of views the video has
+}
+```
+
+### /comments/:videoId
+
+Parameters:
+
+-   `videoId`: The video ID of the YouTube video you want to get comments for.
+
+Response:
+
+```javascript
+{
+    "comments": [
+        {
+            "author": "", // The name of the author of the comment
+            "commentId": "", // The comment ID
+            "commentText": "", // The text of the comment
+            "commentedTime": "14 hours ago", // The time the comment was made
+            "commentorUrl": "/channel/...", // The URL of the channel of the comment
+            "hearted": false, // Whether or not the comment has been hearted
+            "likeCount": 0, // The number of likes the comment has
+            "pinned": false, // Whether or not the comment is pinned
+            "thumbnail": "https://pipedproxy-bom.kavin.rocks/...", // The thumbnail of the comment
+            "verified": false // Whether or not the author of the comment is verified
+        }
+    ], // A list of comments
+    "disabled": false, // Whether or not the comments are disabled
+    "nextpage": "" // A JSON encoded page, which is used for the nextpage endpoint.
+}
+```
+
+### /nextpage/comments/:videoId
+
+Parameters:
+
+-   `videoId`: The video ID of the YouTube video you want to get comments for.
+-   `nextpage`: The JSON encoded nextpage variable, to be sent as a query string.
+
+Response:
+
+```javascript
+{
+    "comments": [
+        {
+            "author": "", // The name of the author of the comment
+            "commentId": "", // The comment ID
+            "commentText": "", // The text of the comment
+            "commentedTime": "14 hours ago", // The time the comment was made
+            "commentorUrl": "/channel/...", // The URL of the channel of the comment
+            "hearted": false, // Whether or not the comment has been hearted
+            "likeCount": 0, // The number of likes the comment has
+            "pinned": false, // Whether or not the comment is pinned
+            "thumbnail": "https://pipedproxy-bom.kavin.rocks/...", // The thumbnail of the comment
+            "verified": false // Whether or not the author of the comment is verified
+        }
+    ], // A list of comments
+    "disabled": false, // Whether or not the comments are disabled
+    "nextpage": "" // A JSON encoded page, which is used for the nextpage endpoint.
+}
+```
+
+### /trending
+
+Parameters:
+
+-   `region`: The region you want to get trending YouTube videos from. Example: `US`.
+
+Response:
+
+```javascript
+[
+    {
+            "duration": 0, // The duration of the trending video in seconds
+            "thumbnail": "https://pipedproxy-bom.kavin.rocks/vi/...", // The thumbnail of the trending video
+            "title": "", // The title of the trending video
+            "uploadedDate": "12 hours ago", // The date the trending video was uploaded
+            "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the trending video
+            "uploaderUrl": "/channel/...", // The URL of the channel of the trending video
+            "uploaderVerified": true, // Whether or not the channel of the trending video is verified
+            "url": "/watch?v=..." // The URL of the trending video
+            "views": 0 // The number of views the trending video has
+        }
+] // A list of trending videos
+```
+
+### /channel/:channelId
+
+Parameters:
+
+-   `channelId`: The channel ID of the YouTube channel you want to get information about.
+
+### /c/:name
+
+Parameters:
+
+-   `name`: The name of the channel you want to get information about.
+
+### /user/:name
+
+Parameters:
+
+-   `name`: The name of the user's channel you want to get information about.
+
+Response:
+
+```javascript
+{
+    "avatarUrl": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel
+    "bannerUrl": "https://pipedproxy-bom.kavin.rocks/...", // The banner of the channel
+    "description": "", // The description of the channel
+    "id": "", // The ID of the channel
+    "name": "", // The name of the channel
+    "nextpage": "", // A JSON encoded page, which is used for the nextpage endpoint.
+    "relatedStreams: [
+        {
+            "duration": 0, // The duration of the channel's video in seconds
+            "thumbnail": "https://pipedproxy-bom.kavin.rocks/vi/...", // The thumbnail of the channel's video
+            "title": "", // The title of the channel's video
+            "uploadedDate": "3 months ago", // The date the channel's video was uploaded
+            "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the channel's video
+            "uploaderUrl": "/channel/...", // The URL of the channel of the channel's video
+            "uploaderVerified": true, // Whether or not the channel is verified
+            "url": "/watch?v=..." // The URL of the channel's video
+            "views": 0, // The number of views the channel's video has
+        }
+    ], // A list of videos from the channel
+    "subscriberCount": 0, // The number of subscribers the channel has
+    "verified": false // Whether or not the channel is verified
+}
+```
+
+### /nextpage/channel/:channelId
+
+Parameters:
+
+-   `channelId`: The channel ID of the YouTube channel you want to get information about.
+-   `nextpage`: The JSON encoded nextpage variable, to be sent as a query string.
+
+Response:
+
+```javascript
+{
+    "nextpage": "", // A JSON encoded page, which is used for the nextpage endpoint.
+    "relatedStreams: [
+        {
+            "duration": 0, // The duration of the channel's video in seconds
+            "thumbnail": "https://pipedproxy-bom.kavin.rocks/vi/...", // The thumbnail of the channel's video
+            "title": "", // The title of the channel's video
+            "uploadedDate": "3 months ago", // The date the channel's video was uploaded
+            "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the channel's video
+            "uploaderUrl": "/channel/...", // The URL of the channel of the channel's video
+            "uploaderVerified": true, // Whether or not the channel is verified
+            "url": "/watch?v=..." // The URL of the channel's video
+            "views": 0, // The number of views the channel's video has
+        }
+    ] // A list of videos from the channel
 }
 ```
