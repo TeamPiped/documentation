@@ -222,7 +222,7 @@ Response:
             "title": "", // The title of the channel's video
             "uploadedDate": "3 months ago", // The date the channel's video was uploaded
             "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the channel's video
-            "uploaderUrl": "/channel/...", // The URL of the channel of the channel's video
+            "uploaderUrl": "/channel/...", // The URL of the channel
             "uploaderVerified": true, // Whether or not the channel is verified
             "url": "/watch?v=..." // The URL of the channel's video
             "views": 0, // The number of views the channel's video has
@@ -252,11 +252,112 @@ Response:
             "title": "", // The title of the channel's video
             "uploadedDate": "3 months ago", // The date the channel's video was uploaded
             "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the channel's video
-            "uploaderUrl": "/channel/...", // The URL of the channel of the channel's video
+            "uploaderUrl": "/channel/...", // The URL of the channel
             "uploaderVerified": true, // Whether or not the channel is verified
             "url": "/watch?v=..." // The URL of the channel's video
             "views": 0, // The number of views the channel's video has
         }
     ] // A list of videos from the channel
+}
+```
+
+### /playlists/:playlistId
+
+Parameters:
+
+-   `playlistId`: The playlist ID of the YouTube playlist you want to get information about.
+
+Response:
+
+```javascript
+{
+    "bannerUrl": "https://pipedproxy-bom.kavin.rocks/...", // The banner of the playlist
+    "name": "", // The name of the playlist
+    "nextpage": "", // A JSON encoded page, which is used for the nextpage endpoint.
+    "relatedStreams: [
+        {
+            "duration": 0, // The duration of the playlist's video in seconds
+            "thumbnail": "https://pipedproxy-bom.kavin.rocks/vi/...", // The thumbnail of the playlist's video
+            "title": "", // The title of the playlist's video
+            "uploadedDate": "3 months ago", // The date the playlist's video was uploaded
+            "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the playlist's video
+            "uploaderUrl": "/channel/...", // The URL of the channel of the playlist's video
+            "uploaderVerified": true, // Whether or not the playlist is verified
+            "url": "/watch?v=..." // The URL of the playlist's video
+            "views": 0, // The number of views the playlist's video has
+        }
+    ], // A list of videos from the playlist
+    "thumbnailUrl": "https://pipedproxy-bom.kavin.rocks/...", // The thumbnail of the playlist
+    "uploader": "", // The name of the creator of the playlist
+    "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the creator of the playlist
+    "uploaderUrl": "/channel/...", // The URL of the creator of the playlist
+    "videos": 0 // The number of videos in the playlist
+}
+```
+
+### /nextpage/playlists/:playlistId
+
+Parameters:
+
+-   `playlistId`: The playlist ID of the YouTube playlist you want to get information about.
+-   `nextpage`: The JSON encoded nextpage variable, to be sent as a query string.
+
+Response:
+
+```javascript
+{
+    "nextpage": "", // A JSON encoded page, which is used for the nextpage endpoint.
+    "relatedStreams: [
+        {
+            "duration": 0, // The duration of the playlist's video in seconds
+            "thumbnail": "https://pipedproxy-bom.kavin.rocks/vi/...", // The thumbnail of the playlist's video
+            "title": "", // The title of the playlist's video
+            "uploadedDate": "3 months ago", // The date the playlist's video was uploaded
+            "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the playlist's video
+            "uploaderUrl": "/channel/...", // The URL of the channel of the playlist's video
+            "uploaderVerified": true, // Whether or not the playlist is verified
+            "url": "/watch?v=..." // The URL of the playlist's video
+            "views": 0, // The number of views the playlist's video has
+        }
+    ] // A list of videos from the playlist
+}
+```
+
+### /suggestions
+
+Parameters:
+
+-   `query`: The query string to get search suggestions for.
+
+Response:
+
+```javascript
+[
+	"", // The search suggestion
+	"" // Another search suggestion
+] // A list of search suggestions
+```
+
+### /sponsors/:videoId
+
+Parameters:
+
+-   `videoId`: The video ID of the YouTube video you want to get information about.
+-   `category`: The category of sponsors you would like to skip. Example: `["sponsor"]`. See the [SponsorBlock Wiki](https://wiki.sponsor.ajay.app/index.php/Segment_Categories) for more information.
+
+Response:
+
+```javascript
+{
+    "hash": "", // The hash of the videoId
+    "segments": [
+        {
+            "UUID": "", // The UUID of the segment
+            "actionType": "skip", // The action type of the segment
+            "category": "sponsor", // The category of the segment
+            "segment": [0, 10], // The start and end time of the segment
+            "videoDuration": 0 // The duration of the video
+        }
+    "videoID": "" // The video ID of the segment
 }
 ```
