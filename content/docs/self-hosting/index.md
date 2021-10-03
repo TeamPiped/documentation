@@ -12,11 +12,44 @@ Run `git clone https://github.com/TeamPiped/Piped-Docker`.
 
 Then, run `cd Piped-Docker`.
 
-Then, run `./configure-instance.sh` and fill in the hostnames when asked.
+Then, run `./configure-instance.sh` and fill in the hostnames when asked. Choose `caddy` as the reverse proxy when asked.
 
 Now, create A records to your server's public IP with the hostnames you had filled in above.
 
 Finally, run `docker-compose up -d` and you're done!
+
+## Docker-Compose Nginx AIO script
+
+Note: This setup requires you to have your own reverse proxy in addition to the one provide, and requires you to configure TLS manually.
+
+First, install `git`, `docker` and `docker-compose`.
+
+Run `git clone https://github.com/TeamPiped/Piped-Docker`.
+
+Then, run `cd Piped-Docker`.
+
+Then, run `./configure-instance.sh` and fill in the hostnames when asked.  Choose `nginx` as the reverse proxy when asked.
+
+Now, create A records to your server's public IP with the hostnames you had filled in above.
+
+Run `docker-compose up -d`.
+
+Forward traffic to 127.0.0.1:8080 with your reverse proxy, **along with the `Host` header**.
+
+For example, in nginx, you would do the following:
+```
+server {
+    listen 80;
+    server_name hostname; # For all 3 hostnames
+
+    location / {
+       proxy_pass http://127.0.0.1:8080;
+       proxy_set_header Host $host;
+    }
+}
+```
+
+Finally, configure your TLS certificates if you need to!
 
 ## Docker-Compose with Nginx
 
