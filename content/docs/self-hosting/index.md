@@ -51,6 +51,10 @@ server {
 
 Finally, configure your TLS certificates if you need to!
 
+# Manually updating
+
+Run `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --run-once piped-frontend piped-backend ytproxy varnish nginx caddy postgres watchtower`
+
 ## Docker-Compose with Nginx
 
 First download the files required to run Piped.
