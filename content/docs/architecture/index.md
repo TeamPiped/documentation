@@ -8,11 +8,10 @@ summary: How is Piped architectured?
 
 Piped has 3 components:
 
--   A frontend in VueJS
--   A backend in Java which uses NewPipeExtractor
--   A proxy in Golang
+-   [A frontend in VueJS](https://github.com/TeamPiped/Piped)
+-   [A backend in Java which uses NewPipeExtractor](https://github.com/TeamPiped/Piped-Backend)
+-   [A proxy in Golang](https://github.com/FireMasterK/http3-ytproxy)
 
-links: https://github.com/TeamPiped/Piped\, https://github.com/TeamPiped/Piped-Backend and, https://github.com/FireMasterK/http3-ytproxy
 
 ## Frontend
 
