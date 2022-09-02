@@ -66,6 +66,12 @@ This parameter sets the buffer goal of the video in seconds.
 
 This parameter can be used to hide the description of a video by default.
 
+### minimizeRecommendations
+
+**Example**: minimizeRecommendations=true
+
+This parameter can be used to hide the list of recommendations on the right, by default.
+
 ### enabledCodecs
 
 **Example**: av1,vp9,avc
