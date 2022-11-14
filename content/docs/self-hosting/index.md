@@ -18,6 +18,8 @@ Now, create A records to your server's public IP with the hostnames you had fill
 
 Finally, run `docker-compose up -d` and you're done!
 
+Consider joining the federation protocol at https://github.com/TeamPiped/piped-federation#how-to-join
+
 ## Docker-Compose Nginx AIO script
 
 Note: This setup requires you to have your own reverse proxy in addition to the one provide, and requires you to configure TLS manually.
@@ -50,6 +52,8 @@ server {
 ```
 
 Finally, configure your TLS certificates if you need to!
+
+Consider joining the federation protocol at https://github.com/TeamPiped/piped-federation#how-to-join
 
 # Manually updating
 
