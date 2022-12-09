@@ -4,9 +4,9 @@ weight: 4
 summary: How can I Self-Host Piped?
 ---
 
-## Docker-Compose Caddy AIO script
+## Docker-Compose Caddy standalone setup
 
-First, install `git`, `docker` and `docker-compose`.
+First, install `git`, `docker` and `docker-compose`. In some newer updates, you can use `docker compose` as a command of `docker`, rather than `docker-compose` with a slash. 
 
 Run `git clone https://github.com/TeamPiped/Piped-Docker`.
 
@@ -16,15 +16,15 @@ Then, run `./configure-instance.sh` and fill in the hostnames when asked. Choose
 
 Now, create A records to your server's public IP with the hostnames you had filled in above.
 
-Finally, run `docker-compose up -d` and you're done!
+Finally, run `docker-compose up -d`, or `docker compose up -d` and you're done!
 
 Consider joining the federation protocol at https://github.com/TeamPiped/piped-federation#how-to-join
 
-## Docker-Compose Nginx AIO script
+## Docker-Compose Nginx standalone setup
 
-Note: This setup requires you to have your own reverse proxy in addition to the one provide, and requires you to configure TLS manually.
+Note: This setup requires you to have your own reverse proxy in nginx, in addition to the one we provide. It also requires you to configure TLS manually, which you can do with [certbot](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04) `sudo certbot --nginx piped.yourdomain.com; sudo certbot --nginx pipedapi.yourdomain.com; sudo certbot --nginx pipedproxy.yourdomain.com`.
 
-First, install `git`, `docker` and `docker-compose`.
+First, install `git`, `docker` and `docker-compose`. In some newer updates, you can use `docker compose` as a command of `docker`, rather than `docker-compose` with a slash. 
 
 Run `git clone https://github.com/TeamPiped/Piped-Docker`.
 
@@ -34,15 +34,17 @@ Then, run `./configure-instance.sh` and fill in the hostnames when asked.  Choos
 
 Now, create A records to your server's public IP with the hostnames you had filled in above.
 
-Run `docker-compose up -d`.
+Run `docker-compose up -d`, or `docker compose up -d`.
 
 Forward traffic to 127.0.0.1:8080 with your reverse proxy, **along with the `Host` header**.
 
 For example, in nginx, you would do the following:
+
 ```
 server {
     listen 80;
-    server_name hostname; # For all 3 hostnames
+    server_name piped.yourdomain.com; # You should have a file like this for all three hostnames, 
+    # i.e. piped.yourdomain.com, pipedapi.yourdomain.com, pipedproxy.yourdomain.com
 
     location / {
        proxy_pass http://127.0.0.1:8080;
@@ -51,9 +53,58 @@ server {
 }
 ```
 
-Finally, configure your TLS certificates if you need to!
+Finally, configure your TLS certificates if you need to! After configuring TLS, you nginx script may look like:
+
+```
+server {
+  server_name piped.yourdomain.com; # You should have a file like this for all three hostnames, 
+  # i.e. piped.yourdomain.com, pipedapi.yourdomain.com, pipedproxy.yourdomain.com
+
+  location / {
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/piped.nunosempere.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/piped.nunosempere.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+  }
+
+  server {
+    if ($host = piped.yourdomain.com) { ## should also vary depending on the domain.
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen 80;
+    server_name piped.yourdomain.com; ## should also vary depending on the domain.
+    return 404; # managed by Certbot
+}
+```
 
 Consider joining the federation protocol at https://github.com/TeamPiped/piped-federation#how-to-join
+
+# Systemd 
+
+Here is a sample systemd script. Make sure that your user and 
+
+```
+# /etc/systemd/system/piped.service
+
+[Unit]
+Description=Piped Youtube Frontend
+Requires=docker.service
+After=docker.service
+
+[Service]
+User=piped
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/piped/Piped-Docker
+ExecStart=/usr/bin/docker compose up -d
+ExecStop=/usr/bin/docker compose down
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
+```
 
 # Manually updating
 
