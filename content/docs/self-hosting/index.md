@@ -83,7 +83,7 @@ Consider joining the federation protocol at https://github.com/TeamPiped/piped-f
 
 # Systemd 
 
-Here is a sample systemd script. Make sure that your user and 
+Here is a sample systemd script. Make sure that your user and your working directories are correct.
 
 ```
 # /etc/systemd/system/piped.service
