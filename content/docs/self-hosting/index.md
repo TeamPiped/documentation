@@ -57,7 +57,7 @@ Consider joining the federation protocol at https://github.com/TeamPiped/piped-f
 
 # Manually updating
 
-Run `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --run-once piped-frontend piped-backend ytproxy varnish nginx caddy postgres watchtower`
+Run `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --run-once piped-frontend piped-backend piped-proxy varnish nginx caddy postgres watchtower`
 
 ## Docker-Compose with Nginx
 
