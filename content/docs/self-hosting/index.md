@@ -104,6 +104,8 @@ Run `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/wat
 
 ## Docker-Compose with Nginx
 
+**WARNING**: This setup is not recommended, as it is difficult to setup and maintain.
+
 First download the files required to run Piped.
 
 ```
