@@ -11,9 +11,9 @@ There are two simple ways to self-host Piped.
 - [Bring your own reverse proxy](#docker-compose-nginx-aio-script) (**recommended**) - This is the recommended way to self-host Piped. You can use any reverse proxy you want, and must configure TLS certificates yourself.
 - [Using Caddy](#docker-compose-caddy-aio-script) - This would use Caddy on port 80 and 443, and automatically configure TLS certificates for you. However, it would be difficult to host multiple services on the same server.
 
-## Docker-Compose Caddy AIO script
+## Docker Compose Caddy AIO script
 
-First, install `git`, `docker` and `docker-compose`.
+First, install `git`, `docker`, and the compose plugin for docker.
 
 Run `git clone https://github.com/TeamPiped/Piped-Docker`.
 
@@ -23,15 +23,15 @@ Then, run `./configure-instance.sh` and fill in the hostnames when asked. Choose
 
 Now, create `A` (and `AAAA`) records to your server's public IP with the hostnames you had filled in above.
 
-Finally, run `docker-compose up -d` and you're done!
+Finally, run `docker compose up -d` and you're done!
 
 Consider joining the federation protocol at https://github.com/TeamPiped/piped-federation#how-to-join
 
-## Docker-Compose Nginx AIO script
+## Docker Compose Nginx AIO script
 
 Note: This setup requires you to have your own reverse proxy in addition to the one provide, and requires you to configure TLS manually.
 
-First, install `git`, `docker` and `docker-compose`.
+First, install `git`, `docker`, and the compose plugin for docker.
 
 Run `git clone https://github.com/TeamPiped/Piped-Docker`.
 
@@ -41,7 +41,7 @@ Then, run `./configure-instance.sh` and fill in the hostnames when asked.  Choos
 
 Now, create `A` (and `AAAA`) records to your server's public IP with the hostnames you had filled in above.
 
-Run `docker-compose up -d`.
+Run `docker compose up -d`.
 
 Forward traffic to 127.0.0.1:8080 with your reverse proxy, **along with the `Host` header**.
 
@@ -102,7 +102,7 @@ Consider joining the federation protocol at https://github.com/TeamPiped/piped-f
 
 Run `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --run-once piped-frontend piped-backend piped-proxy varnish nginx caddy postgres watchtower`
 
-## Docker-Compose with Nginx
+## Docker Compose with Nginx
 
 **WARNING**: This setup is not recommended, as it is difficult to setup and maintain.
 
@@ -126,7 +126,7 @@ Now, edit your `config.properties` file to reflect the changes.
 Now, run piped with the following command:
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
 Now, find your nginx user's and group's id.
