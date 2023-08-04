@@ -4,6 +4,13 @@ weight: 4
 summary: How can I Self-Host Piped?
 ---
 
+# Self-Hosting
+
+There are two simple ways to self-host Piped.
+
+- [Bring your own reverse proxy](#docker-compose-nginx-aio-script) (**recommended**) - This is the recommended way to self-host Piped. You can use any reverse proxy you want, and must configure TLS certificates yourself.
+- [Using Caddy](#docker-compose-caddy-aio-script) - This would use Caddy on port 80 and 443, and automatically configure TLS certificates for you. However, it would be difficult to host multiple services on the same server.
+
 ## Docker-Compose Caddy AIO script
 
 First, install `git`, `docker` and `docker-compose`.
@@ -14,7 +21,7 @@ Then, run `cd Piped-Docker`.
 
 Then, run `./configure-instance.sh` and fill in the hostnames when asked. Choose `caddy` as the reverse proxy when asked.
 
-Now, create A records to your server's public IP with the hostnames you had filled in above.
+Now, create `A` (and `AAAA`) records to your server's public IP with the hostnames you had filled in above.
 
 Finally, run `docker-compose up -d` and you're done!
 
@@ -32,7 +39,7 @@ Then, run `cd Piped-Docker`.
 
 Then, run `./configure-instance.sh` and fill in the hostnames when asked.  Choose `nginx` as the reverse proxy when asked.
 
-Now, create A records to your server's public IP with the hostnames you had filled in above.
+Now, create `A` (and `AAAA`) records to your server's public IP with the hostnames you had filled in above.
 
 Run `docker-compose up -d`.
 
@@ -51,7 +58,43 @@ server {
 }
 ```
 
-Finally, configure your TLS certificates if you need to!
+Here's an example with Apache:
+```
+<VirtualHost *:443>
+    ServerName hostname # For all 3 hostnames
+
+    ProxyPass /  http://127.0.0.1:8080/  nocanon
+    ProxyPassReverse /  http://127.0.0.1:8080/
+
+    ProxyPreserveHost On
+
+    AllowEncodedSlashes On
+
+    # TLS configuration here
+</VirtualHost>
+```
+
+Here's an example with Traefik using Docker compose labels:
+
+This must be applied on the nginx container.
+
+```
+labels:
+  - "traefik.enable=true"
+  - "traefik.http.routers.piped.rule=Host(`hostname`,`hostname2`,`hostname3`)"
+  - "traefik.http.routers.piped.entrypoints=web"
+```
+
+Here's an example using Caddy:
+
+```
+hostname, hostname2, hostname3 {
+    reverse_proxy http://127.0.0.1:8080
+}
+```
+
+
+Finally, configure your TLS certificates if necessary. For nginx, you could use certbot with the nginx plugin.
 
 Consider joining the federation protocol at https://github.com/TeamPiped/piped-federation#how-to-join
 
