@@ -23,9 +23,13 @@ Piped has 3 components:
 -   Uses Java 17
 -   Uses a JNI wrapper around [Reqwest](https://github.com/seanmonstar/reqwest), a Rust HTTP client.
 -   Uses ActiveJ to achieve maximum performance. Which is [really fast](https://web-frameworks-benchmark.netlify.app/result)
--   Supports OpenJ9
+-   Supports OpenJ9, and Hotspot
 -   Each running instance should configure their own proxy, thus allowing multi-gigabit content delivery.
 -   Uses ~70-130 MB of ram. (on OpenJ9)
+
+## Database
+
+-   We currently support PostgreSQL, CockroachDB and YugabyteDB for high availability deployments.
 
 # Proxy
 
@@ -33,6 +37,7 @@ Piped has 3 components:
 -   Has HTTP/2 support.
 -   Uses [actix-web](https://github.com/actix/actix-web) and [reqwest](https://github.com/seanmonstar/reqwest) for maximum performance.
 -   Low memory footprint and high throughput.
+-   Converts `jpeg` images to `webp` on the fly to reduce bandwidth usage.
 
 # Server-Side Caching
 
