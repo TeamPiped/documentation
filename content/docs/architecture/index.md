@@ -9,30 +9,30 @@ summary: How is Piped architectured?
 Piped has 3 components:
 
 -   [A frontend in VueJS](https://github.com/TeamPiped/Piped)
--   [A backend in Java which uses NewPipeExtractor](https://github.com/TeamPiped/Piped-Backend)
--   [A proxy in Golang](https://github.com/FireMasterK/http3-ytproxy)
+-   [A backend in Java](https://github.com/TeamPiped/Piped-Backend) which uses [NewPipeExtractor](https://github.com/TeamNewPipe/NewPipeExtractor)
+-   [A proxy in Rust](https://github.com/FireMasterK/piped-proxy)
 
 
 ## Frontend
 
--   Uses videojs
+-   Uses shaka-player for streaming.
 -   Uses a router for a single page application.
 
 ## Backend
 
--   Uses Java 11
--   Uses the native HTTP client introduced in Java 9
--   Uses netty-reactor to achieve maximum performance and a low footprint.
+-   Uses Java 17
+-   Uses a JNI wrapper around [Reqwest](https://github.com/seanmonstar/reqwest), a Rust HTTP client.
+-   Uses ActiveJ to achieve maximum performance. Which is [really fast](https://web-frameworks-benchmark.netlify.app/result)
 -   Supports OpenJ9
 -   Each running instance should configure their own proxy, thus allowing multi-gigabit content delivery.
 -   Uses ~70-130 MB of ram. (on OpenJ9)
 
 # Proxy
 
--   Uses Golang
--   Has HTTP/2 support. (HTTP/3 is unstable in the current library)
+-   Uses Rust.
+-   Has HTTP/2 support.
+-   Uses [actix-web](https://github.com/actix/actix-web) and [reqwest](https://github.com/seanmonstar/reqwest) for maximum performance.
 -   Low memory footprint and high throughput.
--   Can be used to replace the proxy in various other frontends.
 
 # Server-Side Caching
 
@@ -40,4 +40,4 @@ Caching is done at a Reverse-Proxy/CDN level to reduce the load to the backend. 
 
 # LBRY
 
-LBRY streams are automatically added to stream content via LBRY if the same video is available there.
+LBRY streams are automatically used to stream content via LBRY if the same video is available there.
