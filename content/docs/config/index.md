@@ -12,7 +12,7 @@ The port the backend should listen on.
 
 ### PROXY_PART:
 
-The Base URL address of the proxy. You should use https://github.com/FireMasterK/http3-ytproxy for this. Each instance of the backend should have this on a different hostname for maximum bandwidth.
+The Base URL address of the proxy. You should use https://github.com/TeamPiped/piped-proxy for this. Each instance of the backend should have this on a different hostname for maximum bandwidth.
 
 ### CAPTCHA_BASE_URL:
 
