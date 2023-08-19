@@ -10,7 +10,7 @@ Piped has 3 components:
 
 -   [A frontend in VueJS](https://github.com/TeamPiped/Piped)
 -   [A backend in Java](https://github.com/TeamPiped/Piped-Backend) which uses [NewPipeExtractor](https://github.com/TeamNewPipe/NewPipeExtractor)
--   [A proxy in Rust](https://github.com/FireMasterK/piped-proxy)
+-   [A proxy in Rust](https://github.com/TeamPiped/piped-proxy)
 
 
 ## Frontend
