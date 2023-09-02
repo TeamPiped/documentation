@@ -160,7 +160,7 @@ docker run -d \
     containrrr/watchtower
 ```
 
-Now, create an nginx snipper like so:
+Now, create an nginx snippet like so:
 
 `/etc/nginx/snippets/ytproxy.conf`
 
