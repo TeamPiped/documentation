@@ -66,6 +66,12 @@ This parameter sets the buffer goal of the video in seconds.
 
 This parameter can be used to hide the description of a video by default.
 
+### minimizeComments
+
+**Example**: minimizeComments=true
+
+This parameter can be used to hide the list of comments on the bottom, by default.
+
 ### minimizeRecommendations
 
 **Example**: minimizeRecommendations=true
