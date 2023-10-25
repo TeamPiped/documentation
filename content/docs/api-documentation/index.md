@@ -78,7 +78,7 @@ Response:
     ], // A list of subtitles
     "thumbnailUrl": "https://pipedproxy-bom.kavin.rocks/vi/...", // The thumbnail of the video
     "title": "", // The title of the video
-    "uploadedDate": "2021-01-01", // The date the video was uploaded
+    "uploadDate": "2021-01-01", // The date the video was uploaded
     "uploader": "", // The name of the channel of the video
     "uploaderUrl": "/channel/...", // The URL of the channel of the video
     "uploaderVerified": true, // Whether or not the channel of the video is verified
