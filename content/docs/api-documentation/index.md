@@ -156,7 +156,8 @@ Response:
             "likeCount": 0, // The number of likes the comment has
             "pinned": false, // Whether or not the comment is pinned
             "thumbnail": "https://pipedproxy-bom.kavin.rocks/...", // The thumbnail of the comment
-            "verified": false // Whether or not the author of the comment is verified
+            "verified": false, // Whether or not the author of the comment is verified
+            "creatorReplied": false // Whether the creator has replied to the comment
         }
     ], // A list of comments
     "disabled": false, // Whether or not the comments are disabled
