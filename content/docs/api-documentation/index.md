@@ -126,7 +126,8 @@ Response:
             "pinned": false, // Whether or not the comment is pinned
             "thumbnail": "https://pipedproxy-bom.kavin.rocks/...", // The thumbnail of the comment
             "verified": false, // Whether or not the author of the comment is verified
-            "creatorReplied": false // Whether the creator has replied to the comment 
+            "creatorReplied": false, // Whether the creator has replied to the comment
+	    "channelOwner": false // Whether the comment author is the channel owner 
         }
     ], // A list of comments
     "disabled": false, // Whether or not the comments are disabled
@@ -157,6 +158,7 @@ Response:
             "pinned": false, // Whether or not the comment is pinned
             "thumbnail": "https://pipedproxy-bom.kavin.rocks/...", // The thumbnail of the comment
             "verified": false, // Whether or not the author of the comment is verified
+	          "channelOwner": false, // Whether the comment author is the channel owner
             "creatorReplied": false // Whether the creator has replied to the comment
         }
     ], // A list of comments
