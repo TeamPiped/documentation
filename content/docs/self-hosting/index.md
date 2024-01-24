@@ -11,6 +11,11 @@ There are two simple ways to self-host Piped.
 - [Bring your own reverse proxy](#docker-compose-nginx-aio-script) (**recommended**) - This is the recommended way to self-host Piped. You can use any reverse proxy you want, and must configure TLS certificates yourself.
 - [Using Caddy](#docker-compose-caddy-aio-script) - This would use Caddy on port 80 and 443, and automatically configure TLS certificates for you. However, it would be difficult to host multiple services on the same server.
 
+Because YouTube tends to ban IP addresses, it is recommended to either
+- use the [IPv6 rotator made by the Invidious team](#ipv6-rotator-using-docker) - This is the recommended way because it's easier to set up and doesn't increase loading times.
+- use a VPN or proxy between the Piped backend/proxy and YouTube.
+to keep the instance running if you plan to make your instance public or to have a lot of users.
+
 ## Docker Compose Caddy AIO script
 
 First, install `git`, `docker`, and the compose plugin for docker.
@@ -232,3 +237,31 @@ server {
 ```
 
 Finally, reload the nginx service and you are done!
+
+# IPv6 rotator using Docker
+
+This requires you to already have set up a working Piped instance using Docker Compose as described above.
+
+First of all, make sure that your server supports IPv6 by running `curl -m 5 ipv6.icanhazip.com` and confirm that an IPv6 address is returned as response. If it doesn't, this tutorial won't work.
+
+Next, you need to enable IPv6 in Docker. First, edit `/etc/docker/daemon.json` and insert
+```
+{
+  "experimental": true,
+  "ip6tables": true
+}
+```
+After, edit the `docker-compose.yml` of Piped and insert the following at the end of the file
+```
+networks:
+  default:
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: 2001:db8::/112
+```
+Now restart Docker. To confirm everything worked as expected and your instance now uses IPv6, run `docker exec -it piped-backend curl icanhazip.com`. If you see an IPv6 address here, you successfully force-enabled IPv6.
+
+More information about Docker and IPv6 can be found at https://docs.docker.com/config/daemon/ipv6/.
+
+Last but not least, the `Smart IPv6 Rotator` (credits to the Invidious team!) has to be set up. In order to do so, please follow the steps [at its GitHub repository](https://github.com/iv-org/smart-ipv6-rotator#how-to-setup-very-simple-tutorial) after installing the [required Python packages](https://github.com/iv-org/smart-ipv6-rotator#requirements). That's it, your Piped instance now periodically rotates its IPv6 address!
