@@ -96,7 +96,7 @@ Response:
             "mimeType": "video/mp4", // The mime type of the video stream
             "quality": "720p", // The quality of the video stream
             "url": "https://pipedproxy-bom.kavin.rocks/videoplayback?...", // The stream's URL
-            "videoOnly": false // Whether or not the stream is video only
+            "videoOnly": false, // Whether or not the stream is video only
             "width": 1280 // The width of the video stream
         }
     ], // The video streams of the video
@@ -183,7 +183,7 @@ Response:
             "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the trending video
             "uploaderUrl": "/channel/...", // The URL of the channel of the trending video
             "uploaderVerified": true, // Whether or not the channel of the trending video is verified
-            "url": "/watch?v=..." // The URL of the trending video
+            "url": "/watch?v=...", // The URL of the trending video
             "views": 0 // The number of views the trending video has
         }
 ] // A list of trending videos
@@ -256,8 +256,8 @@ Response:
             "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the channel's video
             "uploaderUrl": "/channel/...", // The URL of the channel
             "uploaderVerified": true, // Whether or not the channel is verified
-            "url": "/watch?v=..." // The URL of the channel's video
-            "views": 0, // The number of views the channel's video has
+            "url": "/watch?v=...", // The URL of the channel's video
+            "views": 0 // The number of views the channel's video has
         }
     ] // A list of videos from the channel
 }
@@ -285,8 +285,8 @@ Response:
             "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the playlist's video
             "uploaderUrl": "/channel/...", // The URL of the channel of the playlist's video
             "uploaderVerified": true, // Whether or not the playlist is verified
-            "url": "/watch?v=..." // The URL of the playlist's video
-            "views": 0, // The number of views the playlist's video has
+            "url": "/watch?v=...", // The URL of the playlist's video
+            "views": 0 // The number of views the playlist's video has
         }
     ], // A list of videos from the playlist
     "thumbnailUrl": "https://pipedproxy-bom.kavin.rocks/...", // The thumbnail of the playlist
@@ -318,8 +318,8 @@ Response:
             "uploaderAvatar": "https://pipedproxy-bom.kavin.rocks/...", // The avatar of the channel of the playlist's video
             "uploaderUrl": "/channel/...", // The URL of the channel of the playlist's video
             "uploaderVerified": true, // Whether or not the playlist is verified
-            "url": "/watch?v=..." // The URL of the playlist's video
-            "views": 0, // The number of views the playlist's video has
+            "url": "/watch?v=...", // The URL of the playlist's video
+            "views": 0 // The number of views the playlist's video has
         }
     ] // A list of videos from the playlist
 }
