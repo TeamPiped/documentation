@@ -153,7 +153,7 @@ Now, you have the user and group id - `33:33`.
 Now, run the proxy with the following command, while replacing the user parameter with what you just found:
 
 ```
-docker run -d --network=host -v "/var/run/ytproxy/:/app/socket" --user 33:33 --restart unless-stopped 1337kavin/ytproxy:latest
+docker run -d --network=host -v "/var/run/ytproxy/:/app/socket" --user 33:33 --restart unless-stopped 1337kavin/piped-proxy:latest
 ```
 
 You can now use watchtower to enable automatic container updates (optional):
