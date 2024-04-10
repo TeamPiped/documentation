@@ -107,7 +107,7 @@ Consider joining the federation protocol at https://github.com/TeamPiped/piped-f
 
 Run `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --run-once piped-frontend piped-backend piped-proxy varnish nginx caddy postgres watchtower`
 
-## Docker Compose with Nginx
+## Docker Compose with system Nginx
 
 **WARNING**: This setup is not recommended, as it is difficult to setup and maintain.
 
@@ -170,14 +170,8 @@ Now, create an nginx snippet like so:
 `/etc/nginx/snippets/ytproxy.conf`
 
 ```
-add_header Access-Control-Allow-Origin *;
-add_header Access-Control-Allow-Headers *;
-if ($request_method = OPTIONS ) {
-   return 200;
-}
 proxy_buffering on;
-proxy_set_header Host $arg_host;
-proxy_ssl_server_name on;
+proxy_buffers 1024 16k;
 proxy_set_header X-Forwarded-For "";
 proxy_set_header CF-Connecting-IP "";
 proxy_hide_header "alt-svc";
@@ -186,14 +180,14 @@ sendfile_max_chunk 512k;
 tcp_nopush on;
 aio threads=default;
 aio_write on;
-directio 2m;
+directio 16m;
 proxy_hide_header Cache-Control;
 proxy_hide_header etag;
 proxy_http_version 1.1;
 proxy_set_header Connection keep-alive;
-proxy_max_temp_file_size 0;
+proxy_max_temp_file_size 32m;
 access_log off;
-proxy_pass http://unix:/var/run/ytproxy/http-proxy.sock;
+proxy_pass http://unix:/var/run/ytproxy/actix.sock;
 ```
 
 Now, create a site configuration file:
