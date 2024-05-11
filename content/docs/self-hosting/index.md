@@ -86,7 +86,7 @@ This must be applied on the nginx container.
 ```
 labels:
   - "traefik.enable=true"
-  - "traefik.http.routers.piped.rule=Host(`hostname`,`hostname2`,`hostname3`)"
+  - "traefik.http.routers.piped.rule=Host(`piped.yourdomain.tld`) || Host(`pipedapi.yourdomain.tld`) || Host(`pipedproxy.yourdomain.tld`)"
   - "traefik.http.routers.piped.entrypoints=web"
 ```
 
