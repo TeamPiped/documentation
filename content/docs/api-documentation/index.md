@@ -6,7 +6,7 @@ summary: A guide on how to use Piped's API.
 
 ## API Servers
 
-A list of public instances can be found at https://github.com/TeamPiped/Piped/wiki/Instances
+A list of public instances can be found [here](/docs/public-instances/).
 
 To keep up-to date with the instances list, you are expected to dynamically parse it.
 
