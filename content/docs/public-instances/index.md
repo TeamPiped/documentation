@@ -52,7 +52,6 @@ ggtyler.dev | https://piapi.ggtyler.dev | 🇺🇸 | No | ![](https://piapi.ggty
 pluto.lat | https://api.watch.pluto.lat | 🇫🇮 | No | ![](https://api.watch.pluto.lat/registered/badge)
 seitan-ayoub.lol | https://piped-backend.seitan-ayoub.lol | 🇩🇪 | No | ![](https://piped-backend.seitan-ayoub.lol/registered/badge)
 owo.si | https://pipedapi.owo.si | 🇩🇪 | No | ![](https://pipedapi.owo.si/registered/badge)
-minionflo.net | https://api.piped.minionflo.net | 🇩🇪 | No | ![](https://api.piped.minionflo.net/registered/badge)
 nezumi.party | https://pipedapi.nezumi.party | 🇮🇹 | No | ![](https://pipedapi.nezumi.party/registered/badge)
 ducks.party | https://pipedapi.ducks.party | 🇳🇱 | No | ![](https://pipedapi.ducks.party/registered/badge)
 ngn.tf | https://pipedapi.ngn.tf | 🇹🇷 | No | ![](https://pipedapi.ngn.tf/registered/badge)
