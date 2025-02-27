@@ -64,3 +64,5 @@ private.coffee | https://api.piped.private.coffee | 🇦🇹 | No | ![](https://
 ehwurscht.at | https://schaunapi.ehwurscht.at | 🇦🇹 | No | ![](https://schaunapi.ehwurscht.at/registered/badge)
 darkness.services | https://pipedapi.darkness.services | 🇺🇸 | No | ![](https://pipedapi.darkness.services/registered/badge)
 andreafortuna.org | https://pipedapi.andreafortuna.org | 🇩🇪 | No | ![](https://pipedapi.andreafortuna.org/registered/badge)
+orangenet.cc | https://pipedapi.orangenet.cc | 🇸🇮 | No | ![](https://pipedapi.orangenet.cc/registered/badge)
+
