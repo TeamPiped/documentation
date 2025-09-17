@@ -18,7 +18,6 @@ privacy.com.de | https://piped-api.privacy.com.de | 🇩🇪 | No | ![](https://
 adminforge.de | https://pipedapi.adminforge.de | 🇩🇪 | No | ![](https://pipedapi.adminforge.de/registered/badge)
 piped.yt | https://api.piped.yt | 🇩🇪 | No | ![](https://api.piped.yt/registered/badge)
 drgns.space | https://pipedapi.drgns.space | 🇺🇸 | No | ![](https://pipedapi.drgns.space/registered/badge)
-ggtyler.dev | https://piapi.ggtyler.dev | 🇺🇸 | No | ![](https://piapi.ggtyler.dev/registered/badge)
 owo.si | https://pipedapi.owo.si | 🇩🇪 | No | ![](https://pipedapi.owo.si/registered/badge)
 ducks.party | https://pipedapi.ducks.party | 🇳🇱 | No | ![](https://pipedapi.ducks.party/registered/badge)
 codespace.cz | https://piped-api.codespace.cz | 🇨🇿 | No | ![](https://piped-api.codespace.cz/registered/badge)
