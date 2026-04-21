@@ -17,7 +17,7 @@ jobs:
         with:
           extended: true
       - run: hugo --minify
-      - uses: aquiladev/ipfs-action@v0.3.1-alpha.3
+      - uses: aquiladev/ipfs-action@v0.3.1
         id: ipfs-add
         with:
           path: ./public
