@@ -25,4 +25,5 @@ reallyaweso.me | https://pipedapi.reallyaweso.me | 🇩🇪 | No | ![](https://p
 private.coffee | https://api.piped.private.coffee | 🇦🇹 | No | ![](https://api.piped.private.coffee/registered/badge)
 darkness.services | https://pipedapi.darkness.services | 🇺🇸 | No | ![](https://pipedapi.darkness.services/registered/badge)
 orangenet.cc | https://pipedapi.orangenet.cc | 🇸🇮 | No | ![](https://pipedapi.orangenet.cc/registered/badge)
+dorcus.digital | https://pipedapi.dorcus.digital | 🇺🇸 | No | ![](https://pipedapi.dorcus.digital/registered/badge)
 
